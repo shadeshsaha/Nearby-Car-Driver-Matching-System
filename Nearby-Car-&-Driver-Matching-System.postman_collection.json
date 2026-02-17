@@ -1,0 +1,91 @@
+
+## 🔹 Collection Name: Nearby Car & Driver Matching System
+
+## 🔹 Base URL
+
+```
+http://localhost:3000
+```
+
+---
+
+# 📌 Endpoint 1: Request Nearby Drivers
+
+### **POST** `/api/ride/request`
+
+### 🔗 Full URL
+
+```
+http://localhost:3000/api/ride/request
+```
+
+---
+
+## 🧾 Headers
+
+| Key          | Value            |
+| ------------ | ---------------- |
+| Content-Type | application/json |
+
+---
+
+## 📥 Request Body (JSON)
+
+```json
+{
+  "user_id": 1,
+  "pickup_lat": 23.8103,
+  "pickup_lng": 90.4125,
+  "radius_km": 5
+}
+```
+
+---
+
+## ✅ Successful Response Example
+
+```json
+{
+  "success": true,
+  "message": "Nearby drivers retrieved successfully",
+  "available_drivers": [
+    {
+      "driver_id": 1,
+      "car_model": "Toyota Axio",
+      "distance_km": 0,
+      "location": {
+        "lat": 23.8103,
+        "lng": 90.4125
+      }
+    },
+    {
+      "driver_id": 7,
+      "car_model": "Toyota Axio",
+      "distance_km": 0.78,
+      "location": {
+        "lat": 23.805,
+        "lng": 90.405
+      }
+    }
+  ]
+}
+```
+
+---
+
+## ❌ Validation Error Example
+
+If radius is negative:
+
+```json
+{
+  "success": false,
+  "message": "Validation Error",
+  "errorMessages": [
+    {
+      "path": "body.radius_km",
+      "message": "Number must be greater than 0"
+    }
+  ]
+}
+```
