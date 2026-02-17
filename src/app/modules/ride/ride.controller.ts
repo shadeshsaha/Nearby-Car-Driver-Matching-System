@@ -8,7 +8,7 @@ const requestRide = async (req: Request, res: Response, next: NextFunction) => {
     res.status(200).json({
       success: true,
       message: "Nearby drivers retrieved successfully",
-      data: result,
+      available_drivers: result,
     });
   } catch (error) {
     next(error);

@@ -4,9 +4,9 @@ const prisma = new PrismaClient();
 
 async function main() {
   // Clear existing data first
-  // await prisma.car.deleteMany();
-  // await prisma.driver.deleteMany();
-  // await prisma.user.deleteMany();
+  await prisma.car.deleteMany();
+  await prisma.driver.deleteMany();
+  await prisma.user.deleteMany();
 
   // Create drivers
   await prisma.driver.createMany({
@@ -78,8 +78,6 @@ async function main() {
 
   console.log("✅ Seeding completed successfully!");
 }
-
-// main().finally(() => prisma.$disconnect());
 
 main()
   .catch((e) => {
